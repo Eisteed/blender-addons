@@ -5,6 +5,8 @@ bl_info = {
     "location": "View3D > 3D View (Global)",
     "description": "Snap To Grid shortcut like Maya (Hold X)",
     "author": "Eisteed",
+    "tracker_url": "https://github.com/Eisteed/blender/",    
+    "doc_url": "https://www.eisteed.com/",
     "version": (1, 0),
     "blender": (4, 2, 1),
     "category": "3D View",
