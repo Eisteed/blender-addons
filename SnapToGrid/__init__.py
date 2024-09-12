@@ -1,7 +1,7 @@
 import bpy
 
 bl_info = {
-    "name": "Snap to Grid",
+    "name": "Snap to Grid (Maya)",
     "location": "View3D > 3D View (Global)",
     "description": "Snap To Grid shortcut like Maya (Hold X)",
     "author": "Eisteed",
