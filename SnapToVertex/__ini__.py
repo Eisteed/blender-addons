@@ -13,9 +13,11 @@ bl_info = {
 }
 
 firstPress = True
-oldTarget = None
-oldSnap = None
-oldAlign = None
+old_use_snap = None
+old_snap_target = None
+old_snap_elements = None
+old_use_snap_align_rotation = None
+
 class SnapToVertex(bpy.types.Operator):
     """Tooltip"""
     bl_idname = "object.snape_to_vertex"
@@ -26,23 +28,26 @@ class SnapToVertex(bpy.types.Operator):
         return context.active_object is not None
 
     def execute(self, context):
-        global firstPress,oldTarget,oldSnap,oldAlign
-        if firstPress : 
-            oldTarget = bpy.context.scene.tool_settings.snap_target
-            oldSnap = bpy.context.scene.tool_settings.snap_elements
-            oldAlign = bpy.context.scene.tool_settings.use_snap_align_rotation
+        global firstPress, old_use_snap, old_snap_target, old_snap_elements, old_use_snap_align_rotation
+        if firstPress :
+            old_use_snap = bpy.context.scene.tool_settings.use_snap
+            old_snap_target = bpy.context.scene.tool_settings.snap_target
+            old_snap_elements = bpy.context.scene.tool_settings.snap_elements
+            old_use_snap_align_rotation = bpy.context.scene.tool_settings.use_snap_align_rotation
+
             bpy.context.scene.tool_settings.use_snap = True
-            bpy.context.scene.tool_settings.use_snap_align_rotation = False
             bpy.context.scene.tool_settings.snap_target = 'ACTIVE'
             bpy.context.scene.tool_settings.snap_elements = {'VERTEX'}
-            firstPress = True
-        else:
-            bpy.context.scene.tool_settings.use_snap = False
-            bpy.context.scene.tool_settings.snap_target = oldTarget
-            bpy.context.scene.tool_settings.snap_elements = oldSnap
-            bpy.context.scene.tool_settings.use_snap_align_rotation = oldAlign
+            bpy.context.scene.tool_settings.use_snap_align_rotation = False
             firstPress = False
-
+            print("PRESSED")
+        else:
+            bpy.context.scene.tool_settings.use_snap = old_use_snap
+            bpy.context.scene.tool_settings.snap_target = old_snap_target
+            bpy.context.scene.tool_settings.snap_elements = old_snap_elements
+            bpy.context.scene.tool_settings.use_snap_align_rotation = old_use_snap_align_rotation
+            firstPress = True
+            print("Released")
         return {'FINISHED'}
 
 def menu_func(self, context):
