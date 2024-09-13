@@ -1,7 +1,7 @@
 import bpy
 
 bl_info = {
-    "name": "Snap to Vertex",
+    "name": "Snap to Vertex (Maya)",
     "location": "View3D > 3D View (Global)",
     "description": "Snap To Vertex shortcut like Maya (Hold V)",
     "author": "Eisteed",
