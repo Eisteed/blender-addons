@@ -1,3 +1,2 @@
-Moved to the new blender extension system (mainly for repository management & auto-update)
-You can find all addons on my repository :
+<h1>Find all my blender addons on my repository :</h1>
 [Eisteed Blender Addons](https:///eisteed.com/blender)
